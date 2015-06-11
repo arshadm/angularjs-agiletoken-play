@@ -1,0 +1,24 @@
+<div class="content">
+    <fieldset>
+        <legend>New Story</legend>
+
+        <form name="queueItemForm" ng-submit="queueItemForm.$valid && saveQueueItem()" novalidate>
+
+            <label for="reference">Reference</label>
+            <input id="reference" type="text" ng-model="queueItem.reference" required/><br/>
+
+            <label for="title">Title</label>
+            <input id="title" type="text" ng-model="queueItem.title" required/><br/>
+
+            <label for="author">Author</label>
+            <input id="author" type="text" ng-model="queueItem.author" required/><br/>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary" ng-disabled="queueItemForm.$invalid" ng-show="queueItem.id != null">Update</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="queueItemForm.$invalid" ng-show="queueItem.id == null">Create</button>
+                <a class="btn" href="/queue/{{queueItem.queueId}}">Cancel</a>
+            </div>
+        </form>
+
+    </fieldset>
+</div>

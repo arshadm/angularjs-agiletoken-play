@@ -1,0 +1,19 @@
+<div class="content">
+    <form name="queueForm" ng-submit="queueForm.$valid && saveQueue()" novalidate>
+
+        <fieldset>
+            <legend>New Queue</legend>
+
+            <label for="name">Name</label>
+            <input id="name" type="text" ng-model="queue.name" required/>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary" ng-disabled="queueForm.$invalid" ng-show="queue.id == null">Create</button>
+                <button type="submit" class="btn btn-primary" ng-disabled="queueForm.$invalid" ng-show="queue.id != null">Rename</button>
+                <a class="btn" href="/">Cancel</a>
+            </div>
+
+        </fieldset>
+
+    </form>
+</div>

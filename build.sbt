@@ -7,6 +7,8 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 scalaVersion := "2.11.6"
 
 libraryDependencies ++= Seq(
+  "org.hibernate" % "hibernate-entitymanager" % "3.6.9.Final",
+  javaJpa,
   jdbc,
   cache,
   ws,

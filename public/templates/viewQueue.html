@@ -1,0 +1,59 @@
+
+<div class="content">
+
+    <h3>{{queue.name}}</h3>
+    <tabset>
+
+        <tab heading="Unmerged">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th style="width: 20%">Reference</th>
+                    <th style="width: 60%">Title</th>
+                    <th style="width: 20%">Author</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in unmergedEntries">
+                        <td>{{item.reference}}</td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.author}}</td>
+                        <td><a href ng-click="markItemMerged(item.id)"><i class="icon-ok"></i></a></td>
+                        <td><a href ng-click="editQueueItem(item.id)"><i class="icon-pencil"></i></a></td>
+                        <td><a href ng-click="delete`                                           QueueItem(item.id)"><i class="icon-remove"></i></a></td>
+                    </tr>
+                    <tr ng-show="unmergedEntries.length == 0">
+                        <td colspan="6">No items available.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </tab>
+
+        <tab heading="Merged">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th style="width: 20%">Reference</th>
+                    <th style="width: 60%">Title</th>
+                    <th style="width: 20%">Author</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in mergedEntries">
+                        <td>{{item.reference}}</td>
+                        <td>{{item.title}}</td>
+                        <td>{{item.author}}</td>
+                    </tr>
+                    <tr ng-show="mergedEntries.length == 0">
+                        <td colspan="3">No items available.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </tab>
+    </tabset>
+
+    <button ng-click="newQueueItem()" class="btn btn-primary"><i class="icon-plus icon-white"/> New Story</button>
+</div>

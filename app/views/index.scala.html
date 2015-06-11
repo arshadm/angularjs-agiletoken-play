@@ -1,7 +1,28 @@
-@(message: String)
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Agile Token Manager - Play Edition</title>
 
-@main("Welcome to Play") {
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/style.css")">
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/2.2.2/css/bootstrap.min.css" media="screen">
+        <script type="text/javascript"
+            src="@routes.Assets.versioned("javascripts/vendor/require-2.1.11.min.js")"
+            data-main="@routes.Assets.versioned("javascripts/app/main")">
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <a class="brand" href="/">Penguin</a>
+                    <ul class="nav">
+                        <li><a href="/">Queues</a></li>
+                    </ul>
+                </div>
+            </div>
 
-    @play20.welcome(message)
+            <ng-view />
 
-}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<div class="content">
+    <h3>Queues</h3>
+    <table class="table table-striped">
+        <tbody>
+            <tr ng-repeat="queue in queues">
+                <td style="width: 100%"><a href="/queue/{{queue.id}}">{{queue.name}}</a></td>
+                <td><a href ng-click="editQueue(queue.id)"><i class="icon-pencil"></i></a></td>
+                <td><a href ng-click="removeQueue(queue.id)"><i class="icon-remove"></i></a></td>
+            </tr>
+            <tr ng-show="queues.length == 0">
+                <td>No queues available.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button ng-click="newQueue()" class="btn btn-primary"><i class="icon-plus icon-white"/> Add Queue</button>
+</div>
