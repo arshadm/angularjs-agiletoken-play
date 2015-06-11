@@ -1,6 +1,6 @@
 
 require.config
-    baseUrl: '/resources/js/app'
+    baseUrl: '/assets/javascripts/app'
     paths:
         "jquery"           : "../vendor/jquery-1.11.0.min"
         "angular"          : "../vendor/angularjs-1.2.9/angular.min"
@@ -11,8 +11,6 @@ require.config
         "angular-route"    : "../vendor/angularjs-1.2.9/angular-route.min"
         "angular-sanitize" : "../vendor/angularjs-1.2.9/angular-sanitize.min"
         "angular-touch"    : "../vendor/angularjs-1.2.9/angular-touch.min"
-        "ui-bootstrap"     : "../vendor/ui-bootstrap-tpls-0.10.0.min"
-        "ng-grid"          : "../vendor/ng-grid-2.0.7.min"
         "domReady"         : "../vendor/domReady"
         "app"              : "app"
     shim:
@@ -24,50 +22,48 @@ require.config
         "angular-route"    : { deps: [ "angular" ], exports: "angular-route" }
         "angular-sanitize" : { deps: [ "angular" ], exports: "angular-sanitize" }
         "angular-touch"    : { deps: [ "angular" ], exports: "angular-touch" }
-        "ui-bootstrap"     : { deps: [ "angular" ], exports: "ui-bootstrap" }
-        "ng-grid"          : { deps: [ "angular" ], exports: "ng-grid" }
         "domReady"         : { exports: "domReady" }
 
 require [ "app", "domReady" ], (app, domReady) ->
     app.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationProvider) ->
         $routeProvider
         .when "/",
-            templateUrl: "/template/index"
+            templateUrl: "/assets/templates/dashboard.html"
             controller: "HomeController"
             resolve:
                 queues: [ "queueService", (queueService) ->
                     queueService.getQueues()
                 ]
         .when "/queue/new",
-            templateUrl: "/template/editQueue"
+            templateUrl: "/assets/templates/editQueue.html"
             controller: "EditQueueController"
             resolve:
                 queue: [ "queueService", (queueService) ->
                     queueService.newQueue()
                 ]
         .when "/queue/:queueId",
-            templateUrl: "/template/viewQueue"
+            templateUrl: "/assets/templates/viewQueue.html"
             controller: "ViewQueueController"
             resolve:
                 queue: [ "$route", "queueService", ($route, queueService) ->
                     queueService.getQueue($route.current.params.queueId)
                 ]
         .when "/queue/:queueId/edit",
-            templateUrl: "/template/editQueue"
+            templateUrl: "/assets/templates/editQueue.html"
             controller: "EditQueueController"
             resolve:
                 queue: [ "$route", "queueService", ($route, queueService) ->
                     queueService.getQueue($route.current.params.queueId)
                 ]
         .when "/queue/:queueId/queueItem/new",
-            templateUrl: "/template/editQueueItem"
+            templateUrl: "/assets/templates/editQueueItem.html"
             controller: "EditQueueItemController"
             resolve:
                 queueItem: [ "$route", "queueService", ($route, queueService) ->
                     queueService.newQueueItem($route.current.params.queueId)
                 ]
         .when "/queue/:queueId/queueItem/:queueItemId/edit",
-            templateUrl: "/template/editQueueItem"
+            templateUrl: "/assets/templates/editQueueItem.html"
             controller: "EditQueueItemController"
             resolve:
                 queueItem: [ "$route", "queueService", ($route, queueService) ->

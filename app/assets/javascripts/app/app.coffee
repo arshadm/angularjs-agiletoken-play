@@ -7,8 +7,6 @@ define [
     "angular-route"
     "angular-sanitize"
     "angular-touch"
-    "ui-bootstrap"
-    "ng-grid"
     "controllers/HomeController"
     "controllers/ViewQueueController"
     "controllers/EditQueueController"
@@ -20,8 +18,6 @@ define [
     angular.module "AgileTokenApp", [
         "ngResource"
         "ngRoute"
-        "ngGrid"
-        "ui.bootstrap"
         "controllers"
         "services"
         "directives"
